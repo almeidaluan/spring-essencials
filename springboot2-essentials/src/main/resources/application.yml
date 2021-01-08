@@ -13,3 +13,9 @@ spring:
 server:
   error:
     include-stacktrace: on_param #?trace=true na url
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
