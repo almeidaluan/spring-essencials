@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-06T19:01:35-0300",
+    date = "2021-01-08T13:14:26-0300",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 15.0.1 (Oracle Corporation)"
 )
 @Component
@@ -33,7 +33,7 @@ public class AnimeMapperImpl implements AnimeMapper {
     }
 
     @Override
-    public AnimeResponse AnimeRequestToAnime(Anime anime) {
+    public AnimeResponse AnimeToAnimeResponse(Anime anime) {
         if ( anime == null ) {
             return null;
         }
@@ -55,7 +55,7 @@ public class AnimeMapperImpl implements AnimeMapper {
 
         List<AnimeResponse> list = new ArrayList<AnimeResponse>( anime.size() );
         for ( Anime anime1 : anime ) {
-            list.add( AnimeRequestToAnime( anime1 ) );
+            list.add( AnimeToAnimeResponse( anime1 ) );
         }
 
         return list;

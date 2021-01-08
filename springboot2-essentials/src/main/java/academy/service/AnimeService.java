@@ -11,10 +11,11 @@ import academy.repository.AnimeRepository;
 import lombok.extern.log4j.Log4j2;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +37,9 @@ public class AnimeService implements IAnimeService {
    // }
 
     @Override
-    public List<AnimeResponse> getAllAnimes() {
+    public Page<AnimeResponse> getAllAnimes(Pageable pageable) {
         AnimeMapper mapper = Mappers.getMapper(AnimeMapper.class);
-        return mapper.AnimeToAnimeResponse(animeRepository.findAll());
+        return animeRepository.findAll(pageable).map(mapper::AnimeToAnimeResponse);
     }
 
     @Override

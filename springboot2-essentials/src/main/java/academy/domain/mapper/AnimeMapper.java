@@ -6,6 +6,7 @@ import academy.domain.entity.AnimeResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface AnimeMapper {
             @Mapping(source="anime.categoria", target="categoriaAnime"),
             @Mapping(source="anime.dataLancamento", target="dataLancamentoAnime")
     })
-    AnimeResponse AnimeRequestToAnime(Anime anime);
+    AnimeResponse AnimeToAnimeResponse(Anime anime);
 
 
     @Mappings({
