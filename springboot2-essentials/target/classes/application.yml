@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: validate
+  datasource:
+    url: jdbc:mysql://localhost:3306/DB_ANIME?createDatabaseIfNotExist=true&timezone=UTC
+    username: root
+    password: root
+
+server:
+  error:
+    include-stacktrace: on_param #?trace=true na url
