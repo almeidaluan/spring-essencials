@@ -43,13 +43,13 @@ public class AnimeService implements IAnimeService {
     }
 
     @Override
-    public Optional<Anime> FindAnimeById(Long id) {
+    public Anime FindAnimeById(Long id) {
         //animes.stream()
         //        .filter( x -> x.getId().equals(id))
         //       .findFirst()
         //       .orElseThrow( () -> new ResponseStatusException(HttpStatus.BAD_REQUEST,"Id nao foi encontrado"));
 
-        return Optional.ofNullable(animeRepository.findById(id).orElseThrow(() -> new BadRequestException("Id nao foi encontrado")));
+        return animeRepository.findById(id).orElseThrow(() -> new BadRequestException("Id nao foi encontrado"));
     }
 
     public List<Anime> findAnimesCustom(String nome, LocalDate dataLancamento){
@@ -65,11 +65,11 @@ public class AnimeService implements IAnimeService {
 
     @Override
     public void DeleteAnime(Long id) {
-        animeRepository.delete(FindAnimeById(id).get());
+        animeRepository.delete(FindAnimeById(id));
     }
 
     public void ReplaceAnime(Long id, Anime anime){
-        Anime animeDb = FindAnimeById(id).get();
+        Anime animeDb = FindAnimeById(id);
 
         if(animeDb != null){
             BeanUtils.copyProperties(anime,animeDb);

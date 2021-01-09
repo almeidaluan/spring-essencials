@@ -33,9 +33,9 @@ public class AnimeController {
     }
 
     @GetMapping
-    public Page<AnimeResponse> getAnimes(Pageable pageable){
+    public ResponseEntity<Page<AnimeResponse>> getAnimes(Pageable pageable){
         log.info("Requisicao lista de animes: " + dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return animeService.getAllAnimes(pageable);
+        return ResponseEntity.ok(animeService.getAllAnimes(pageable));
     }
     @GetMapping("/find-custom")
     public ResponseEntity<List<Anime>> FindCustom(String nome,  @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataLancamento){
@@ -43,7 +43,7 @@ public class AnimeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Anime> FindAnimeById(@PathVariable Long id){
+    public Anime FindAnimeById(@PathVariable Long id){
         return animeService.FindAnimeById(id);
     }
 
