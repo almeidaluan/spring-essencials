@@ -1,5 +1,6 @@
-package academy.domain.entity;
+package academy.domain.request;
 
+import academy.domain.entity.Categoria;
 import lombok.Data;
 
 @Data

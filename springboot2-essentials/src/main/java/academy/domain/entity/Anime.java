@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity(name = "ANIME")
+@Data
 public class Anime implements Serializable {
 
     @Id

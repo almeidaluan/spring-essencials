@@ -1,4 +1,4 @@
-package academy.domain.entity;
+package academy.domain.response;
 
 import lombok.Data;
 

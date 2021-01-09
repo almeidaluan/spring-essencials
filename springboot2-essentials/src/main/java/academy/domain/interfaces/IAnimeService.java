@@ -1,8 +1,8 @@
 package academy.domain.interfaces;
 
 import academy.domain.entity.Anime;
-import academy.domain.entity.AnimeRequest;
-import academy.domain.entity.AnimeResponse;
+import academy.domain.request.AnimeRequest;
+import academy.domain.response.AnimeResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

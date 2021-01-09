@@ -1,13 +1,11 @@
 package academy.controller;
 
 import academy.domain.entity.Anime;
-import academy.domain.entity.AnimeRequest;
-import academy.domain.entity.AnimeResponse;
+import academy.domain.request.AnimeRequest;
+import academy.domain.response.AnimeResponse;
 import academy.domain.interfaces.IAnimeService;
-import academy.domain.mapper.AnimeMapper;
 import academy.util.interfaces.IDateUtil;
 import lombok.extern.log4j.Log4j2;
-import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;

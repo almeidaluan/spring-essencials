@@ -1,9 +1,7 @@
 package academy.controller;
 
-import academy.domain.entity.Anime;
-import academy.domain.entity.AnimeRequest;
 import academy.domain.entity.Teste;
-import academy.domain.entity.TesteRequest;
+import academy.domain.request.TesteRequest;
 import academy.domain.mapper.TesteMapper;
 import lombok.extern.log4j.Log4j2;
 import org.mapstruct.factory.Mappers;

@@ -1,12 +1,11 @@
 package academy.domain.mapper;
 
 import academy.domain.entity.Anime;
-import academy.domain.entity.AnimeRequest;
-import academy.domain.entity.AnimeResponse;
+import academy.domain.request.AnimeRequest;
+import academy.domain.response.AnimeResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 

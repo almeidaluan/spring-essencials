@@ -1,13 +1,13 @@
 package academy.domain.mapper;
 
 import academy.domain.entity.Teste;
-import academy.domain.entity.TesteRequest;
+import academy.domain.request.TesteRequest;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-08T13:08:24-0300",
+    date = "2021-01-08T19:59:16-0300",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 15.0.1 (Oracle Corporation)"
 )
 @Component

@@ -2,8 +2,8 @@ package academy.service;
 
 
 import academy.domain.entity.Anime;
-import academy.domain.entity.AnimeRequest;
-import academy.domain.entity.AnimeResponse;
+import academy.domain.request.AnimeRequest;
+import academy.domain.response.AnimeResponse;
 import academy.domain.exception.BadRequestException;
 import academy.domain.interfaces.IAnimeService;
 import academy.domain.mapper.AnimeMapper;

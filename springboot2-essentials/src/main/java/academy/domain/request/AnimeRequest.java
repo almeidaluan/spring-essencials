@@ -1,4 +1,4 @@
-package academy.domain.entity;
+package academy.domain.request;
 
 import lombok.Builder;
 import lombok.Data;
