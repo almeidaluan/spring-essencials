@@ -37,9 +37,9 @@ public class AnimeService implements IAnimeService {
    // }
 
     @Override
-    public Page<AnimeResponse> getAllAnimes(Pageable pageable) {
+    public Page<Anime> getAllAnimes(Pageable pageable) {
         AnimeMapper mapper = Mappers.getMapper(AnimeMapper.class);
-        return animeRepository.findAll(pageable).map(mapper::AnimeToAnimeResponse);
+        return animeRepository.findAll(pageable); //.map(mapper::AnimeToAnimeResponse);
     }
 
     @Override

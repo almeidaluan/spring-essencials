@@ -2,6 +2,7 @@ package academy.util;
 
 import academy.domain.entity.Anime;
 import academy.domain.response.AnimeResponse;
+import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
 
@@ -18,6 +19,7 @@ public class AnimeCreator {
     public static Anime createValidAnime(){
         return Anime.builder()
                 .name("Hajime no Ippo")
+                .dataLancamento(LocalDate.of(2020,12,31))
                 .id(1L)
                 .build();
     }

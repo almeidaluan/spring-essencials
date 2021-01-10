@@ -33,7 +33,7 @@ public class AnimeController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<AnimeResponse>> getAnimes(Pageable pageable){
+    public ResponseEntity<Page<Anime>> getAnimes(Pageable pageable){
         log.info("Requisicao lista de animes: " + dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.getAllAnimes(pageable));
     }

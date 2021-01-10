@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface IAnimeService {
 
-    Page<AnimeResponse> getAllAnimes(Pageable pageable);
+    Page<Anime> getAllAnimes(Pageable pageable);
     Anime FindAnimeById(Long id);
     Anime SaveAnime(AnimeRequest anime);
     void DeleteAnime(Long id);

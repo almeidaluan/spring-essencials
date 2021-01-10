@@ -4,6 +4,7 @@ import academy.domain.entity.Anime;
 import academy.domain.entity.Anime.AnimeBuilder;
 import academy.domain.request.AnimeRequest;
 import academy.domain.response.AnimeResponse;
+import academy.domain.response.AnimeResponse.AnimeResponseBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-08T19:59:16-0300",
+    date = "2021-01-09T19:35:36-0300",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 15.0.1 (Oracle Corporation)"
 )
 @Component
@@ -38,13 +39,13 @@ public class AnimeMapperImpl implements AnimeMapper {
             return null;
         }
 
-        AnimeResponse animeResponse = new AnimeResponse();
+        AnimeResponseBuilder animeResponse = AnimeResponse.builder();
 
-        animeResponse.setNameAnime( anime.getName() );
-        animeResponse.setCategoriaAnime( anime.getCategoria() );
-        animeResponse.setDataLancamentoAnime( anime.getDataLancamento() );
+        animeResponse.nameAnime( anime.getName() );
+        animeResponse.categoriaAnime( anime.getCategoria() );
+        animeResponse.dataLancamentoAnime( anime.getDataLancamento() );
 
-        return animeResponse;
+        return animeResponse.build();
     }
 
     @Override
