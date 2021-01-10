@@ -1,6 +1,7 @@
 package academy.controller;
 
 import academy.domain.entity.Anime;
+import academy.domain.exception.BadRequestException;
 import academy.domain.interfaces.IAnimeService;
 import academy.domain.response.AnimeResponse;
 import academy.util.AnimeCreator;
@@ -14,6 +15,7 @@ import org.mockito.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,6 +41,9 @@ class AnimeControllerTest {
         BDDMockito.when(animeService.getAllAnimes(ArgumentMatchers.any())).thenReturn(animePage);
         BDDMockito.when(animeService.findAnimesCustom(ArgumentMatchers.anyString(),ArgumentMatchers.any()))
                 .thenReturn(List.of(AnimeCreator.createValidAnime()));
+
+        BDDMockito.when(animeService.FindAnimeById(ArgumentMatchers.anyLong()))
+                .thenReturn(AnimeCreator.createValidAnime());
 
     }
 
@@ -88,5 +93,30 @@ class AnimeControllerTest {
                 .hasSize(1);
 
         Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("return Anime by Id when successful")
+    void findById_ReturnAnimeWithIdWhenSuccessful(){
+        Anime anime = animeController.FindAnimeById(1L);
+
+        String expectedName = AnimeCreator.createValidAnime().getName();
+
+        Assertions.assertThat(anime).isNotNull();
+        Assertions.assertThat(anime.getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("return BadRequest Exception when Not found Anime")
+    void findById_ReturnBadRequestExceptionWithIdWhenNotFound(){
+
+        //        Assertions.assertThatThrownBy(() -> this.animeRepository.save(anime))
+//                .isInstanceOf(ConstraintViolationException.class);
+        BDDMockito.when(animeService.FindAnimeById(ArgumentMatchers.anyLong()))
+                .thenThrow(BadRequestException.class);
+
+        Assertions.assertThatExceptionOfType(BadRequestException.class)
+                .isThrownBy(() -> animeController.FindAnimeById(255L));
+
     }
 }
