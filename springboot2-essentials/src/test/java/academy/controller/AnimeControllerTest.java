@@ -14,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
@@ -44,6 +46,8 @@ class AnimeControllerTest {
 
         BDDMockito.when(animeService.FindAnimeById(ArgumentMatchers.anyLong()))
                 .thenReturn(AnimeCreator.createValidAnime());
+
+        BDDMockito.doNothing().when(animeService).DeleteAnime(ArgumentMatchers.anyLong());
 
     }
 
@@ -118,5 +122,19 @@ class AnimeControllerTest {
         Assertions.assertThatExceptionOfType(BadRequestException.class)
                 .isThrownBy(() -> animeController.FindAnimeById(255L));
 
+    }
+
+    @Test
+    @DisplayName("delete removes anime when successful")
+    void delete_RemovesAnime_WhenSuccessful(){
+
+        Assertions.assertThatCode(() ->animeController.RemoveAnime(1L))
+                .doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = animeController.RemoveAnime(1L);
+
+        Assertions.assertThat(entity).isNotNull();
+
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
 }
