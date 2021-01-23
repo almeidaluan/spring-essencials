@@ -10,4 +10,5 @@ import java.util.List;
 public interface AnimeRepositoryQueries {
 
     List<Anime> find(String name, LocalDate dataLancamento);
+    List<Anime> findAlgumacoisa();
 }
