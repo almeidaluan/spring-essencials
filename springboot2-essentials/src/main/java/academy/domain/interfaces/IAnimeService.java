@@ -17,5 +17,5 @@ public interface IAnimeService {
     Anime SaveAnime(AnimeRequest anime);
     void DeleteAnime(Long id);
     void ReplaceAnime(Long id, Anime anime);
-    List<Anime> findAnimesCustom(String nome, LocalDate dataLancamento);
+    List<Anime> findAnimesCustom(String name, LocalDate dataLancamento);
 }

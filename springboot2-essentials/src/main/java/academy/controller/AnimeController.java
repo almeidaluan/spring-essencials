@@ -8,6 +8,7 @@ import academy.util.interfaces.IDateUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +39,8 @@ public class AnimeController {
         return ResponseEntity.ok(animeService.getAllAnimes(pageable));
     }
     @GetMapping("/find-custom")
-    public ResponseEntity<List<Anime>> FindCustom(String nome,  @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataLancamento){
-        return ResponseEntity.ok(animeService.findAnimesCustom(nome, dataLancamento));
+    public ResponseEntity<List<Anime>> FindCustom(String name, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataLancamento){
+        return ResponseEntity.ok(animeService.findAnimesCustom(name, dataLancamento));
     }
 
     @GetMapping("/{id}")

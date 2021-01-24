@@ -60,7 +60,7 @@ public class AnimeRepositoryImpl implements AnimeRepositoryQueries {
         var parametros = new HashMap<String, Object>();
 
         if (StringUtils.hasLength(name)) {
-            jpql.append("and name like :name ");
+            jpql.append("and name like :name");
             parametros.put("name", "%" + name + "%");
         }
 

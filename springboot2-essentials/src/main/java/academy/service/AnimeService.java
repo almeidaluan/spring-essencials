@@ -52,8 +52,8 @@ public class AnimeService implements IAnimeService {
         return animeRepository.findById(id).orElseThrow(() -> new BadRequestException("Id nao foi encontrado"));
     }
 
-    public List<Anime> findAnimesCustom(String nome, LocalDate dataLancamento){
-        return animeRepository.find(nome,dataLancamento);
+    public List<Anime> findAnimesCustom(String name, LocalDate dataLancamento){
+        return animeRepository.find(name,dataLancamento);
     }
 
     public Anime SaveAnime(AnimeRequest anime){
