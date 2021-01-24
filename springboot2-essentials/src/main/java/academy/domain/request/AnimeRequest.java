@@ -1,5 +1,6 @@
 package academy.domain.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class AnimeRequest {
     private String nameAnime;
 
     @NotEmpty(message = "O Campo Categoria do Anime nao pode ser nullo nem vazio")
+    @JsonProperty("categoryAnime")
     private String categoriaAnime;
 
     private LocalDate dataLancamentoAnime;

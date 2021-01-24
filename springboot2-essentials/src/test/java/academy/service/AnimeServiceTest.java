@@ -115,7 +115,7 @@ class AnimeServiceTest {
         Anime anime = service.SaveAnime(AnimeCreator.createValidAnimeToSave());
         anime.setId(1L);
 
-        Assertions.assertThat(anime).isNotNull().isEqualTo(AnimeCreator.createValidAnime());
+        Assertions.assertThat(anime).isNotNull().isEqualTo(AnimeCreator.createValidAnime02());
 
     }
 }

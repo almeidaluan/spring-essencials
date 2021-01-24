@@ -25,6 +25,14 @@ public class AnimeCreator {
                 .build();
     }
 
+    public static Anime createValidAnime02(){
+        return Anime.builder()
+                .name("Hajime no Ippo")
+                .dataLancamento(LocalDate.of(2020,12,31))
+                .id(1L)
+                .build();
+    }
+
     public static AnimeRequest createValidAnimeToSave(){
         return AnimeRequest.builder()
                 .nameAnime("Hajime no Ippo")
