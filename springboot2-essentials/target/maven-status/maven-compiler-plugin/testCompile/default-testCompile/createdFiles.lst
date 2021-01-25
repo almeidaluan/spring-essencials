@@ -1,0 +1,8 @@
+academy\util\AnimeCreator.class
+academy\repository\AnimeRepositoryTest.class
+academy\service\AnimeServiceTest.class
+academy\integration\AnimeControllerIntegration$2.class
+academy\integration\AnimeControllerIntegration.class
+academy\integration\AnimeControllerIntegration$3.class
+academy\controller\AnimeControllerTest.class
+academy\integration\AnimeControllerIntegration$1.class

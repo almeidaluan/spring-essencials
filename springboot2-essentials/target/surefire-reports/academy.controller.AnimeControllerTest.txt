@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: academy.controller.AnimeControllerTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.903 s - in academy.controller.AnimeControllerTest
