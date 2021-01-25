@@ -3,6 +3,7 @@ package academy.controller;
 import academy.domain.entity.Anime;
 import academy.domain.exception.BadRequestException;
 import academy.domain.interfaces.IAnimeService;
+import academy.domain.request.AnimeRequest;
 import academy.domain.response.AnimeResponse;
 import academy.util.AnimeCreator;
 import academy.util.interfaces.IDateUtil;
@@ -48,6 +49,19 @@ class AnimeControllerTest {
                 .thenReturn(AnimeCreator.createValidAnime());
 
         BDDMockito.doNothing().when(animeService).DeleteAnime(ArgumentMatchers.anyLong());
+
+        BDDMockito.when(animeService.SaveAnime(ArgumentMatchers.any(AnimeRequest.class)))
+                .thenReturn(AnimeCreator.createValidAnime());
+
+    }
+
+    @Test
+    @DisplayName("save returns anime when successful")
+    void save_ReturnsAnime_WhenSuccessful(){
+
+        Anime anime = animeController.SaveAnime(AnimeCreator.createValidAnimeToSave()).getBody();
+
+        Assertions.assertThat(anime).isNotNull().isEqualTo(AnimeCreator.createValidAnime());
 
     }
 
@@ -98,6 +112,9 @@ class AnimeControllerTest {
 
         Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
     }
+
+
+
 
     @Test
     @DisplayName("return Anime by Id when successful")
