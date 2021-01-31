@@ -18,15 +18,14 @@ public class SecurityApplication  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
+        http.csrf().disable()// tirar o disable .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) dar and
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .httpBasic();
     }
-
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
