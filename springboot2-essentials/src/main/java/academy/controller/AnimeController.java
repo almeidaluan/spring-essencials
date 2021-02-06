@@ -13,6 +13,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,6 +41,8 @@ public class AnimeController {
         log.info("Requisicao lista de animes: " + dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.getAllAnimes(pageable));
     }
+
+
     @GetMapping("/find-custom")
     public ResponseEntity<List<Anime>> FindCustom(String name, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataLancamento){
         return ResponseEntity.ok(animeService.findAnimesCustom(name, dataLancamento));
@@ -46,6 +50,13 @@ public class AnimeController {
 
     @GetMapping("/{id}")
     public Anime FindAnimeById(@PathVariable Long id){
+        return animeService.FindAnimeById(id);
+    }
+
+    @GetMapping("/teste-user/{id}")
+    public Anime FindAnimeByIdAndReturnUserOn(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails){
+        log.info(userDetails.getAuthorities());
+        log.info(userDetails.getUsername());
         return animeService.FindAnimeById(id);
     }
 
