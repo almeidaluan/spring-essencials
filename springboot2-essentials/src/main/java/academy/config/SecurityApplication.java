@@ -1,5 +1,7 @@
 package academy.config;
 
+import academy.service.UserAcademyService;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,8 +17,10 @@ import org.springframework.security.web.server.csrf.CookieServerCsrfTokenReposit
 @EnableWebSecurity
 @Log4j2
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@AllArgsConstructor
 public class SecurityApplication  extends WebSecurityConfigurerAdapter {
 
+    private final UserAcademyService userAcademyService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -33,14 +37,15 @@ public class SecurityApplication  extends WebSecurityConfigurerAdapter {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         log.info("Password Encoded {}", passwordEncoder.encode("teste"));
         log.info("Password Encoded {}", passwordEncoder.encode("teste123"));
-        auth.inMemoryAuthentication()
-                .withUser("almeidaluan")
-                .password(passwordEncoder.encode("teste123"))
-                .roles("USER","ADMIN")
-                .and()
-                .withUser("dev")
-                .password(passwordEncoder.encode("senhadev"))
-                .roles("USER");
+//        auth.inMemoryAuthentication()
+//                .withUser("almeidaluan")
+//                .password(passwordEncoder.encode("teste123"))
+//                .roles("USER","ADMIN")
+//                .and()
+//                .withUser("dev")
+//                .password(passwordEncoder.encode("senhadev"))
+//                .roles("USER");
+        auth.userDetailsService(userAcademyService).passwordEncoder(passwordEncoder);
 
     }
 
